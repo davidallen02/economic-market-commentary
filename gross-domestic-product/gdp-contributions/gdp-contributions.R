@@ -28,4 +28,4 @@ foo <- gridExtra::grid.arrange(grobs = list(title,
                                             gdp_contributions), 
                                layout_matrix = lay)
 
-ggplot2::ggsave("gdp-contributions.png", plot = foo, width = 10, height = 6.75, units = "in")
+ggplot2::ggsave("gross-domestic-product/gdp-contributions/gdp-contributions.png", plot = foo, width = 10, height = 6.75, units = "in")
