@@ -23,7 +23,7 @@ payrolls_by_occupation <- p
 
 
 
-paragraph <- readr::read_file("payrolls.txt") %>%
+paragraph <- readr::read_file("labor-market/payrolls/payrolls.txt") %>%
   stringr::str_wrap(width = 50) %>%
   paste(sep = "\n") %>%
   grid::textGrob(x = 0, y = 1, just = "top", hjust = 0)
@@ -34,4 +34,4 @@ foo <- gridExtra::grid.arrange(grobs = list(title,
                                             payrolls_by_occupation), 
                                layout_matrix = lay)
 
-ggplot2::ggsave("payrolls.png", plot = foo, width = 10, height = 6.75, units = "in")
+ggplot2::ggsave("labor-market/payrolls/payrolls.png", plot = foo, width = 10, height = 6.75, units = "in")

@@ -15,11 +15,11 @@ title <- grid::textGrob("US Labor Market",
                           fontsize = 36,
                           col      = "#850237"))
 
-load("~/OneDrive/PAMGMT/Economics/data/employment-situation/output/tam/employment-normalized.RData")
+load("~/OneDrive/PAMGMT/Economics/data/employment-situation/output/tam/employment-by-occupation-normalized.RData")
 employment_normalized <- p
 
 foo <- gridExtra::grid.arrange(grobs = list(title, 
                                             employment_normalized), 
                                layout_matrix = lay)
 
-ggplot2::ggsave("employment-normalized.png", plot = foo, width = 10, height = 6.75, units = "in")
+ggplot2::ggsave("labor-market/employment-normalized/employment-normalized.png", plot = foo, width = 10, height = 6.75, units = "in")

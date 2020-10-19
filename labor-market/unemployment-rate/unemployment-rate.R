@@ -29,4 +29,4 @@ foo <- gridExtra::grid.arrange(grobs = list(title,
                                             unemployment_rate_race), 
                                layout_matrix = lay)
 
-ggplot2::ggsave("unemployment-rate.png", plot = foo, width = 10, height = 6.75, units = "in")
+ggplot2::ggsave("labor-market/unemployment-rate/unemployment-rate.png", plot = foo, width = 10, height = 6.75, units = "in")
