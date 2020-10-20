@@ -41,7 +41,6 @@ dev.off()
 
 p <- grid::rasterGrob(png::readPNG("equity-markets/sector-treemap/treemap.png"))
 
-
 lay <- pamngr::set_layout(2)
 
 title <- pamngr::set_title("Equity Markets")
