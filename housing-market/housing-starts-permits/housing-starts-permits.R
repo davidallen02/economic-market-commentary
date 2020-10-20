@@ -11,21 +11,31 @@ path <- if(Sys.info()["nodename"] %in% c("BBJW", "BBDA")){
 }
 
 load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts.RData"))
-<<<<<<< HEAD
 housing_starts <- p + ggplot2::theme(legend.position = "none", 
                                           plot.caption    = ggplot2::element_blank())
 
 load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-northeast.RData"))
-northeast <- p + ggplot2::theme(plot.caption = ggplot2::element_blank())
+northeast <- p + 
+  ggplot2::theme(plot.caption = ggplot2::element_blank()) +
+  ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
+
 
 load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-midwest.RData"))
-midwest <- p + ggplot2::theme(plot.caption = ggplot2::element_blank())
+midwest <- p + 
+  ggplot2::theme(plot.caption = ggplot2::element_blank()) +
+  ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
+
 
 load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-south.RData"))
-south <- p + ggplot2::theme(plot.caption = ggplot2::element_blank())
+south <- p + 
+  ggplot2::theme(plot.caption = ggplot2::element_blank()) +
+  ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
+
 
 load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-west.RData"))
-west <- p + ggplot2::theme(plot.caption = ggplot2::element_blank())
+west <- p + 
+  ggplot2::theme(plot.caption = ggplot2::element_blank()) + 
+  ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
 
 foo <- gridExtra::grid.arrange(grobs = list(title, 
                                             housing_starts,
