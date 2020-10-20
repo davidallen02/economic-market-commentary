@@ -72,7 +72,7 @@ prev_1qtr <- pamngr::get_data("s5cond", type = "Equity", flds = field) %>%
     c("Consumer\nDiscretionary\n(COND)", 
       "Consumer\nStaples\n(CONS)", 
       "Communication\nServices\n(TELS)", 
-      "Real\nEstates\n(RLST)", 
+      "Real\nEstate\n(RLST)", 
       "Materials\n(MATR)", 
       "Industrials\n(INDU)",
       "Utilities\n(UTIL)", 
