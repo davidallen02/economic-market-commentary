@@ -4,7 +4,7 @@ lay <- readxl::read_excel("layouts.xlsx",
                           col_names = TRUE) %>% 
   as.matrix()
 
-title <- grid::textGrob("US Labor Market",
+title <- grid::textGrob("Labor Market",
                         x    = 0, 
                         y    = 0.5,
                         just = "left",
