@@ -13,18 +13,27 @@ weights <- pamngr::get_data("s5cond", type = "Equity", flds = field) %>%
   dplyr::bind_cols(pamngr::get_data("s5finl", type = "Equity", flds = field)) %>%
   dplyr::bind_cols(pamngr::get_data("s5inft", type = "Equity", flds = field)) %>%
   dplyr::bind_cols(pamngr::get_data("s5hlth", type = "Equity", flds = field)) %>%
-  magrittr::set_colnames(c("s5cond", "s5cons", "s5tels", "s5rlst", "s5matr", "s5indu",
-                           "s5util", "s5enrs", "s5finl", "s5inft", "s5hlth")) %>%
+  magrittr::set_colnames(
+    c("Consumer\nDiscretionary\n(COND)", 
+      "Consumer\nStaples\n(CONS)", 
+      "Communication\nServices\n(TELS)", 
+      "Real\nEstate\n(RLST)", 
+      "Materials\n(MATR)", 
+      "Industrials\n(INDU)",
+      "Utilities\n(UTIL)", 
+      "Energy\n(ENRS)", 
+      "Financials\n(FINL)", 
+      "Information Technology\n(INFT)", 
+      "Health Care\n(HLTH)")) %>%
   tidyr::pivot_longer(cols = tidyr::everything(), names_to = "index") %>%
   dplyr::mutate(index = index %>% 
-                  stringr::str_to_upper() %>%
                   paste0("\n", round(value,2), "%"))
 
 png("equity-markets/sector-treemap/treemap.png", width = 10, height = 6, units = "in", res = 350)
 p <- treemap::treemap(weights, 
                       index = "index", 
                       vSize = "value", 
-                      palette = pamngr::pam.pal(),
+                      palette = pamngr::pam.pal()[c(3,1,2,8,9,11,6,10,5,4,7)],
                       title = "S&P 500 Sector Weights",
                       fontsize.title = 20,
                       aspRatio = 13/6.75) 
