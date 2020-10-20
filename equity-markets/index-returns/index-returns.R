@@ -42,7 +42,8 @@ p2 <- prev_1qtr %>%
   pamngr::pam_plot(
     plot_title = "Index Total Returns",
     plot_subtitle = "Year to Date",
-    caption = FALSE
+    caption = FALSE,
+    show_legend = FALSE
   )
 
 
