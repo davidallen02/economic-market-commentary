@@ -12,10 +12,13 @@ prev_1qtr <- pamngr::get_data("spx", type = "Equity", flds = field) %>%
   dplyr::bind_cols(pamngr::get_data("mxef", type = "Equity", flds = field)) %>%
   magrittr::set_colnames(c("spx", "ccmp", "indu", "rty", "mxea", "mxef")) %>%
   tidyr::pivot_longer(cols = tidyr::everything(), names_to = "index") %>%
-  dplyr::mutate(index = index %>% stringr::str_to_upper())
+  dplyr::mutate(
+    index = index %>% stringr::str_to_upper() %>% factor() %>% forcats::fct_reorder(-value),
+    foo = "foo"
+  )
 
 p1 <- prev_1qtr %>%
-  pamngr::barplot(x = "index", fill = "index") %>%
+  pamngr::barplot(x = "index", fill = "foo") %>%
   pamngr::pam_plot(
     plot_title = "Index Total Returns",
     plot_subtitle = "Last Quarter",
@@ -33,12 +36,20 @@ prev_1qtr <- pamngr::get_data("spx", type = "Equity", flds = field) %>%
   dplyr::bind_cols(pamngr::get_data("rty", type = "Equity", flds = field)) %>%
   dplyr::bind_cols(pamngr::get_data("mxea", type = "Equity", flds = field)) %>%
   dplyr::bind_cols(pamngr::get_data("mxef", type = "Equity", flds = field)) %>%
-  magrittr::set_colnames(c("spx", "ccmp", "indu", "rty", "mxea", "mxef")) %>%
+  magrittr::set_colnames(c("S&P 500\n(SPX)", 
+                           "Nasdaq\n(CCMP)", 
+                           "Dow Jones\nIndustrial Average\n(INDU)", 
+                           "Russell\n2000\n(RTY)", 
+                           "Developed\nInternational\n(MXEA)", 
+                           "Emerging\nInternational\n(MXEF)")) %>%
   tidyr::pivot_longer(cols = tidyr::everything(), names_to = "index") %>%
-  dplyr::mutate(index = index %>% stringr::str_to_upper())
+  dplyr::mutate(
+    index = index %>% factor() %>% forcats::fct_reorder(-value),
+    foo = "foo"
+    )
 
 p2 <- prev_1qtr %>%
-  pamngr::barplot(x = "index", fill = "index") %>%
+  pamngr::barplot(x = "index", fill = "foo") %>%
   pamngr::pam_plot(
     plot_title = "Index Total Returns",
     plot_subtitle = "Year to Date",
@@ -59,10 +70,13 @@ prev_1qtr <- pamngr::get_data("spx", type = "Equity", flds = field) %>%
   dplyr::bind_cols(pamngr::get_data("mxef", type = "Equity", flds = field)) %>%
   magrittr::set_colnames(c("spx", "ccmp", "indu", "rty", "mxea", "mxef")) %>%
   tidyr::pivot_longer(cols = tidyr::everything(), names_to = "index") %>%
-  dplyr::mutate(index = index %>% stringr::str_to_upper())
+  dplyr::mutate(
+    index = index %>% stringr::str_to_upper() %>% factor() %>% forcats::fct_reorder(-value),
+    foo = "foo"
+  )
 
 p3 <- prev_1qtr %>%
-  pamngr::barplot(x = "index", fill = "index") %>%
+  pamngr::barplot(x = "index", fill = "foo") %>%
   pamngr::pam_plot(
     plot_title = "Index Total Returns",
     plot_subtitle = "Trailing 12 Months",
