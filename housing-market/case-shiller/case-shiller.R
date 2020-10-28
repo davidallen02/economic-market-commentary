@@ -18,27 +18,31 @@ national <- p +
 load(file = paste0(path, "san-diego-case-shiller-annual-pchange.RData"))
 san_diego <- p + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
-  ggplot2::labs(title = "San Diego")
+  ggplot2::labs(title = "San Diego") 
 
 load(file = paste0(path, "new-york-case-shiller-annual-pchange.RData"))
 new_york <- p + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
-  ggplot2::labs(title = "New York")
+  ggplot2::labs(title = "New York") +
+  ggplot2::scale_fill_manual(values = pamngr::pam.pal()[2])
 
 load(file = paste0(path, "los-angeles-case-shiller-annual-pchange.RData"))
 los_angeles <- p + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
-  ggplot2::labs(title = "Los Angeles")
+  ggplot2::labs(title = "Los Angeles") +
+  ggplot2::scale_fill_manual(values = pamngr::pam.pal()[2])
 
 load(file = paste0(path, "chicago-case-shiller-annual-pchange.RData"))
 chicago <- p + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
-  ggplot2::labs(title = "Chicago")
+  ggplot2::labs(title = "Chicago") +
+  ggplot2::scale_fill_manual(values = pamngr::pam.pal()[2])
 
 load(file = paste0(path, "san-francisco-case-shiller-annual-pchange.RData"))
 san_francisco <- p + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
-  ggplot2::labs(title = "San Francisco")
+  ggplot2::labs(title = "San Francisco") +
+  ggplot2::scale_fill_manual(values = pamngr::pam.pal()[2])
 
 foo <- gridExtra::grid.arrange(grobs = list(title, 
                                             national,
