@@ -4,11 +4,8 @@ lay <- pamngr::set_layout(14)
 
 title <- pamngr::set_title("Consumption")
 
-p1 <- pamngr::run_and_load("personal-income-spending", "spending-pchange-category") %>% 
-  pamngr::pam_plot(
-    plot_title = "Personal Spending",
-    plot_subtitle = "Normalized to December 2019",
-    caption = FALSE)
+p1 <- pamngr::run_and_load("personal-income-spending", "spending-pchange-category")
+p1 <- p1 + ggplot2::theme(plot.caption = ggplot2::element_blank())
 
 p2 <- pamngr::run_and_load("personal-income-spending", "spending-monthly-change") %>% 
   pamngr::pam_plot(
