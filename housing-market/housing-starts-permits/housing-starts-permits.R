@@ -4,37 +4,24 @@ lay <- pamngr::set_layout(11)
 
 title <- pamngr::set_title("Housing Starts")
 
-path <- if(Sys.info()["nodename"] %in% c("BBJW", "BBDA")){
-  "R:/David/"
-} else {
-  "~/OneDrive/PAMGMT"
-}
+housing_starts <- pamngr::run_and_load("housing-starts", "housing-starts") + 
+  ggplot2::theme(legend.position = "none", 
+                 plot.caption    = ggplot2::element_blank())
 
-load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts.RData"))
-housing_starts <- p + ggplot2::theme(legend.position = "none", 
-                                          plot.caption    = ggplot2::element_blank())
-
-load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-northeast.RData"))
-northeast <- p + 
+northeast <- pamngr::run_and_load("housing-starts", "housing-starts-northeast") + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
   ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
 
-
-load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-midwest.RData"))
-midwest <- p + 
+midwest <- pamngr::run_and_load("housing-starts", "housing-starts-midwest") + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
   ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
 
-
-load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-south.RData"))
-south <- p + 
+south <- pamngr::run_and_load("housing-starts", "housing-starts-south") + 
   ggplot2::theme(plot.caption = ggplot2::element_blank()) +
   ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
 
-
-load(file = paste0(path, "/Economics/data/housing-starts/output/tam/housing-starts-west.RData"))
-west <- p + 
-  ggplot2::theme(plot.caption = ggplot2::element_blank()) + 
+west <- pamngr::run_and_load("housing-starts", "housing-starts-west") + 
+  ggplot2::theme(plot.caption = ggplot2::element_blank()) +
   ggplot2::scale_x_datetime(date_breaks = "6 months", date_labels = "%b %Y")
 
 foo <- gridExtra::grid.arrange(grobs = list(title, 

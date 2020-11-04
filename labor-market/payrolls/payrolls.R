@@ -1,27 +1,14 @@
 library(magrittr)
 
-lay <- readxl::read_excel("layouts.xlsx", 
-                          sheet     = "lay-3", 
-                          range     = "A1:AN28", 
-                          col_names = TRUE) %>% 
-  as.matrix()
+lay <- pamngr::set_layout(3)
 
-title <- grid::textGrob("Labor Market",
-                        x    = 0, 
-                        y    = 0.5,
-                        just = "left",
-                        gp   = grid::gpar(
-                          fontface = "bold",
-                          fontsize = 36,
-                          col      = "#850237"))
+title <- pamngr::set_title("Labor Market")
 
-load("~/OneDrive/PAMGMT/Economics/data/employment-situation/output/tam/monthly-change-in-payrolls.RData")
-monthly_change_in_payrolls <- p
+monthly_change_in_payrolls <- pamngr::run_and_load("employment-situation", 
+                                                 "monthly-change-payrolls", 
+                                                 "monthly-change-in-payrolls")
 
-load("~/OneDrive/PAMGMT/Economics/data/employment-situation/output/tam/payrolls-by-occupation.RData")
-payrolls_by_occupation <- p
-
-
+payrolls_by_occupation <- pamngr::run_and_load("employment-situation", "payrolls-by-occupation")
 
 paragraph <- readr::read_file("labor-market/payrolls/payrolls.txt") %>%
   stringr::str_wrap(width = 50) %>%
@@ -34,4 +21,5 @@ foo <- gridExtra::grid.arrange(grobs = list(title,
                                             payrolls_by_occupation), 
                                layout_matrix = lay)
 
-ggplot2::ggsave("labor-market/payrolls/payrolls.png", plot = foo, width = 10, height = 6.75, units = "in")
+ggplot2::ggsave("labor-market/payrolls/payrolls.png", 
+                plot = foo, width = 10, height = 6.75, units = "in")
