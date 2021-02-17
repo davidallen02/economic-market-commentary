@@ -100,7 +100,7 @@ p2 <- p2 +
     values = c("Consumer\nDiscretionary\n(COND)" = pamngr::pam.pal()[1], 
                "Consumer\nStaples\n(CONS)" = pamngr::pam.pal()[2], 
                "Communication\nServices\n(TELS)" = pamngr::pam.pal()[3], 
-               "Real\nEstates\n(RLST)" = pamngr::pam.pal()[4], 
+               "Real\nEstate\n(RLST)" = pamngr::pam.pal()[4], 
                "Materials\n(MATR)" = pamngr::pam.pal()[5], 
                "Industrials\n(INDU)" = pamngr::pam.pal()[6],
                "Utilities\n(UTIL)" = pamngr::pam.pal()[7], 
